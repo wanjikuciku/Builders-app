@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+<!-- Styles block -->
+
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet">
+{% endblock %}
+
+{% block content%}
+<div class="container">
+    <div class='jumbotron'>
+        <div class="row" style="margin-top: 50px;">
+          <div class="col-md-3"> </div>
+          <div class="col-md-6" style="border: 1px solid #fca3b7; padding: 30px 10px; border-radius: 5px; font-size: 16px;">
+    
+        <h1 align='center'>BUILDERS-APP</h1>
+        <hr>
+        
+{% endblock %}
