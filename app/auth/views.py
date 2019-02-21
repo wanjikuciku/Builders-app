@@ -1,9 +1,11 @@
 from flask import render_template ,flash, redirect,url_for,request
 from flask_login import login_user,logout_user,login_required
 from . import auth
+from .. import main
 from ..models import *
 from .forms import *
 from .. import db
+from app.main import views
 
 
 @auth.route('/register',methods=['GET', 'POST'])
@@ -19,7 +21,9 @@ def register():
 	return render_template('auth/register.html',registration_form = form)
 
 
-
+@auth.route('/professionals')
+def professionals():
+    return render_template('professionals.html')
 
 @auth.route('/login', methods=['GET','POST'])
 def login():
@@ -30,6 +34,8 @@ def login():
 			login_user(user,login_form.remember.data)
 			return redirect(request.args.get('next') or url_for('main.index'))
 		flash('Invalid Password')
+		return redirect(url_for('auth.professionals'))
+
 
 	title = "builders login"
 	return render_template('auth/login.html', login_form = login_form,title = title)
